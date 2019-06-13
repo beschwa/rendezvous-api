@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
-	validates :username, uniqueness: { case_sensitive: false }
+	validates :username, uniqueness: { case_sensitive: false }, presence: true
+	
 	has_secure_password
 
 	has_many :owned_events, class_name: 'Event'

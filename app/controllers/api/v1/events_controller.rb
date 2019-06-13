@@ -3,6 +3,7 @@ class Api::V1::EventsController < ApplicationController
 	skip_before_action :authorized, only: [:index, :show]
 	before_action :find_event, only: [:update]
 
+
 	def index
 		events = Event.all
 		render json: events
@@ -14,18 +15,20 @@ class Api::V1::EventsController < ApplicationController
 	end
 
 	def create
-		event = Event.create(event_params)
-		byebug
+		derp = event_params
+		derp[:when] = DateTime.strptime(derp[:when], '%m-%d-%Y %H:%M')
+		event = Event.create(derp)
+		# byebug
 		if event.valid?
-			render json: {event: event}, status: :created
+			render json: {event: EventSerializer.new(event)}, status: :created
 		else
-			render json: {error: event.errors}
+			render json: {message: event.errors.full_messages}
 		end
 	end
 
 	def update
 		@event.update(update_params)
-		render json: {event: @event}
+		render json: {event: EventSerializer.new(@event)}
 	end
 
 

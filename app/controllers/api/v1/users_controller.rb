@@ -20,11 +20,12 @@ class Api::V1::UsersController < ApplicationController
 
 	def create
 		user = User.create(user_params)
+		# byebug
 		if user.valid?
 			token = encode_token(user_id: user.id)
-			render json: {user: user, jwt: token}, status: :created
+			render json: {user: UserSerializer.new(user), jwt: token}, status: :created
 		else
-			render json: {error: user.errors}
+			render json: {message: user.errors.full_messages}
 		end
 	end
 
