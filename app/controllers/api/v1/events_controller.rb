@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
 
-	skip_before_action :authorized, only: [:index, :show]
+	skip_before_action :authorized, only: [:index, :show, :resources]
 	before_action :find_event, only: [:update]
 
 
@@ -31,6 +31,10 @@ class Api::V1::EventsController < ApplicationController
 		render json: {event: EventSerializer.new(@event)}
 	end
 
+
+	def resources
+
+	end
 
 	private
 

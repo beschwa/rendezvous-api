@@ -12,4 +12,5 @@ class UserSerializer < ActiveModel::Serializer
 		# byebug
 		{owned: x, attending: y}
 	end
+
 end

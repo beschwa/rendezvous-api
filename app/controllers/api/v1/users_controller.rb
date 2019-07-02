@@ -19,7 +19,9 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def create
-		user = User.create(user_params)
+		createparams = user_params
+		# createparams["avatar"] = "https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"
+		user = User.create(createparams)
 		# byebug
 		if user.valid?
 			token = encode_token(user_id: user.id)
@@ -32,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
 	def update
 		# byebug
 		@user.update(update_params)
-		render json: {user: @user}
+		render json: {user: UserSerializer.new(@user)}
 	end
 
 	private
