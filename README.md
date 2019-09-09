@@ -1,26 +1,8 @@
-# README
+## Rendezvous
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Putting the social in social media, Rendezvous is an attempt at limiting online interaction between prospective friends or even lovers!
 
-Things you may want to cover:
+### `bundle` then `rails s` 
+to get the server running.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
-# doshit-api
+Note: For optimal experience, please allow local servers to be ran on port 3000. Thank you, enjoy :)
