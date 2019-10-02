@@ -9,6 +9,7 @@ class Api::V1::AttendeesController < ApplicationController
 
 	def create
 		attendee = Attendee.create(event_id: params[:event_id], user_id: params[:user_id])
+		# byebug
 		render json: attendee
 	end
 
